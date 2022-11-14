@@ -9,7 +9,7 @@
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/app-context.xml</param-value>
+		<param-value>/WEB-INF/root-context.xml</param-value>
 	</context-param>
 
 	<servlet>
@@ -17,7 +17,10 @@
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value></param-value>
+			<!-- XML 配置	-->
+			<param-value>/WEB-INF/app-context.xml</param-value>
+			<!-- Java Based 配置	-->
+<!--			<param-value>/WEB-INF/java-based-context.xml</param-value>-->
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
@@ -25,6 +28,29 @@
 	<servlet-mapping>
 		<servlet-name>dispatcherServlet</servlet-name>
 		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>default</servlet-name>
+		<servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>
+		<init-param>
+			<param-name>fork</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		<init-param>
+			<param-name>xpoweredBy</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		<load-on-startup>3</load-on-startup>
+	</servlet>
+
+	<servlet>
+		<servlet-name>hello</servlet-name>
+		<servlet-class>com.example.springmvc.HelloController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>hello</servlet-name>
+		<url-pattern>/hello</url-pattern>
 	</servlet-mapping>
 
 </web-app>

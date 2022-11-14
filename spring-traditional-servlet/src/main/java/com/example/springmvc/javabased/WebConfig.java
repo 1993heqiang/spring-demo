@@ -14,24 +14,32 @@
  * limitations under the License.
  */
 
-package com.example.springmvc.config;
+package com.example.springmvc.javabased;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-//@EnableWebMvc
-//@ComponentScan
-//@Configuration(proxyBeanMethods = false)
-public class WebConfig /*implements WebMvcConfigurer*/ {
+@EnableWebMvc
+@ComponentScan(basePackages = "com.example.springmvc.xml.controller")
+@Configuration(proxyBeanMethods = false)
+public class WebConfig implements WebMvcConfigurer {
+	private static final Log LOGGER = LogFactory.getLog(WebConfig.class);
 
-/*	@Override
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/static/**").addResourceLocations("/WEB-INF/static/");
+	}
+
+	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addViewController("/").setViewName("home");
 	}
@@ -44,16 +52,15 @@ public class WebConfig /*implements WebMvcConfigurer*/ {
 		return viewResolver;
 	}
 
-	@Bean
+/*	@Bean
 	// Only used when running in embedded servlet
 	public DispatcherServlet dispatcherServlet() {
 		return new DispatcherServlet();
-	}
+	}*/
 
 	@Override
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
 		configurer.enable();
-	}*/
-
+	}
 
 }
