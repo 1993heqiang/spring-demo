@@ -20,6 +20,7 @@
     <module>spring-mvc-demo</module>
     <module>spring-native-demo</module>
     <module>spring-traditional-servlet</module>
+    <module>spring-webflux-demo</module>
   </modules>
 
   <properties>
