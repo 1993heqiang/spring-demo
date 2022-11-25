@@ -10,43 +10,20 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
   <artifactId>spring-native-demo</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
   <name>spring-native-demo</name>
   <description>Demo project for Spring Boot</description>
-  <packaging>pom</packaging>
   <properties>
     <repackage.classifier/>
     <spring-native.version>0.12.1</spring-native.version>
   </properties>
 
   <dependencies>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-actuator</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-jdbc</artifactId>
-    </dependency>
+
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
-<!--      <exclusions>-->
-<!--        <exclusion>-->
-<!--          <groupId>org.springframework.boot</groupId>-->
-<!--          <artifactId>spring-boot-starter-tomcat</artifactId>-->
-<!--        </exclusion>-->
-<!--      </exclusions>-->
     </dependency>
-<!--    <dependency>-->
-<!--      <groupId>org.springframework.boot</groupId>-->
-<!--      <artifactId>spring-boot-starter-jetty</artifactId>-->
-<!--    </dependency>-->
 
-<!--    <dependency>-->
-<!--      <groupId>org.springframework.boot</groupId>-->
-<!--      <artifactId>spring-boot-starter-webflux</artifactId>-->
-<!--    </dependency>-->
     <dependency>
       <groupId>org.springframework.experimental</groupId>
       <artifactId>spring-native</artifactId>
@@ -54,44 +31,17 @@
     </dependency>
 
     <dependency>
-      <groupId>redis.clients</groupId>
-      <artifactId>jedis</artifactId>
-      <version>4.3.0</version>
-    </dependency>
-
-    <dependency>
-      <groupId>com.h2database</groupId>
-      <artifactId>h2</artifactId>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
       <optional>true</optional>
     </dependency>
+
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
-<!--    <dependency>-->
-<!--      <groupId>io.projectreactor</groupId>-->
-<!--      <artifactId>reactor-test</artifactId>-->
-<!--      <scope>test</scope>-->
-<!--    </dependency>-->
 
-    <dependency>
-      <groupId>org.testcontainers</groupId>
-      <artifactId>testcontainers</artifactId>
-      <version>1.17.5</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.testcontainers</groupId>
-      <artifactId>junit-jupiter</artifactId>
-      <version>1.17.5</version>
-      <scope>test</scope>
-    </dependency>
   </dependencies>
 
   <build>
@@ -193,7 +143,7 @@
                 <id>build-native</id>
                 <phase>package</phase>
                 <goals>
-                  <goal>build</goal>
+                  <goal>compile-no-fork</goal>
                 </goals>
               </execution>
             </executions>
