@@ -56,7 +56,6 @@ class ResourceLoaderDemoTest {
 		PropertiesPropertySource propertySource = new PropertiesPropertySource("test", properties);
 		MutablePropertySources propertySources = new MutablePropertySources();
 		propertySources.addFirst(propertySource);
-		return new PropertySourcesPropertyResolver(
-				propertySources);
+		return new PropertySourcesPropertyResolver(propertySources);
 	}
 }
