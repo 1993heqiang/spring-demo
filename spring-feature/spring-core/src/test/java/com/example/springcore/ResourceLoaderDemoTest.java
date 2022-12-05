@@ -35,9 +35,10 @@ class ResourceLoaderDemoTest {
 	@Test
 	void loadPropertiesTest() {
 		Resource resource = resourceLoader.getResource(
-				"classpath:com/example/springcore/example.xml");
+				"classpath:com/example/springcore/example.properties");
 		PropertyResolver propertyResolver = createPropertyResolver(resource);
 		assertEquals("bar", propertyResolver.getProperty("foo"));
+		assertEquals("hello bar", propertyResolver.getProperty("hello.foo"));
 	}
 
 	@Test
